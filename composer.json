@@ -1,0 +1,17 @@
+{
+    "name": "danielpataki/dynamiccolor",
+    "description": "A collection of methods which aim to make outputting dynamic CSS using PHP easy. The class has CMS theme creation in mind, the goal is to enable color manipulation (lightening, farkening, opacity).",
+    "keywords": ["color", "ui", "css", "frontend", "design", "php"],
+    "homepage": "https://github.com/danielpataki/dynamicColor",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "authors" : [
+      { "name": "Daniel Pataki", "homepage":"http://danielpataki.com", "role" : "creator" }
+    ],
+    "autoload": {
+      "classmap": ["src"]
+    },
+    "bin": ["src/dynamicColor.php"]
+}
