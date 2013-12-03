@@ -149,9 +149,9 @@ class dynamicColor {
         list($H,$S,$L) = array( $hsl['H']/360,$hsl['S'],$hsl['L'] );
 
         if( $S == 0 ) {
-            $r = $L * 255;
-            $g = $L * 255;
-            $b = $L * 255;
+            $r = round( $L * 255 );
+            $g = round( $L * 255 );
+            $b = round( $L * 255 );
         } else {
 
             if($L<0.5) {
