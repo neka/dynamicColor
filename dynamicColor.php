@@ -406,9 +406,9 @@ class dynamicColor {
 
             $var_1 = 2 * $L - $var_2;
 
-            $r = round( 255 * self::_huetorgb( $var_1, $var_2, $H + ( 1 / 3 ) ) );
-            $g = round( 255 * self::_huetorgb( $var_1, $var_2, $H ) );
-            $b = round( 255 * self::_huetorgb( $var_1, $var_2, $H - ( 1 / 3 ) ) );
+            $r = round( 255 * self::hueToRGB( $var_1, $var_2, $H + ( 1 / 3 ) ) );
+            $g = round( 255 * self::hueToRGB( $var_1, $var_2, $H ) );
+            $b = round( 255 * self::hueToRGB( $var_1, $var_2, $H - ( 1 / 3 ) ) );
 
         }
 
@@ -419,6 +419,42 @@ class dynamicColor {
 		}
 
         return $rgb;
+    }
+
+    /** HUE To RGB
+     *
+     * Given a Hue, returns corresponding RGB value
+     *
+     * @param type $v1
+     * @param type $v2
+     * @param type $vH
+     *
+     * @return int
+     *
+     */
+    private static function hueToRGB( $v1, $v2, $vH ) {
+        if( $vH < 0 ) {
+            $vH += 1;
+        }
+
+        if( $vH > 1 ) {
+            $vH -= 1;
+        }
+
+        if( ( 6 * $vH ) < 1 ) {
+               return ( $v1 + ( $v2 - $v1 ) * 6 * $vH );
+        }
+
+        if( ( 2 * $vH ) < 1 ) {
+            return $v2;
+        }
+
+        if( ( 3 * $vH ) < 2 ) {
+            return ( $v1 + ( $v2 - $v1 ) * ( ( 2 / 3 ) - $vH ) * 6 );
+        }
+
+        return $v1;
+
     }
 
     /** RGB Array To RGB String
