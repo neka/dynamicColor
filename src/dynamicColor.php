@@ -79,7 +79,7 @@ class dynamicColor {
      * @param bool|int $threshold
      * @return boolean
      */
-    public function isDark( $threshold = false, $color == false ){
+    public function isDark( $threshold = false, $color = false ){
 
     	$threshold = ( empty( $threshold ) ) ? $this->_threshold : $threshold;
 
@@ -95,7 +95,7 @@ class dynamicColor {
      * @param bool|int $threshold
      * @return boolean
      */
-    public function isLight( $threshold = false, $color == false ){
+    public function isLight( $threshold = false, $color = false ){
 
     	$threshold = ( empty( $threshold ) ) ? $this->_threshold : $threshold;
 
