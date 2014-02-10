@@ -13,18 +13,21 @@ class dynamicColor {
 
     private $_originalColor;
     private $_color;
+    private $_threshold;
 
     /**
      * Instantiates the class with a HEX value
      * @param string $hex
      */
-    function __construct( $hex, $retain = false ) {
+    function __construct( $hex, $retain = false, $threshold = 130 ) {
+
 
         $hex = self::_checkHex($hex);
 
         $this->_color = self::hexToRgb( $hex );
 		$this->_originalColor = $this->_color;
 
+		$this->_threshold = $threshold;
         $this->_retain = $retain;
     }
 
@@ -70,6 +73,37 @@ class dynamicColor {
 		return $this;
     }
 
+    /**
+     * Returns whether or not a given color is considered "dark"
+     * @param array|book $color
+     * @param bool|int $threshold
+     * @return boolean
+     */
+    public function isDark( $threshold = false, $color == false ){
+
+    	$threshold = ( empty( $threshold ) ) ? $this->_threshold : $threshold;
+
+		$color = ( empty( $color ) ) ? $this->_color : $color;
+
+        return (( $color['R']*299 + $color['G']*587 + $color['B']*114 )/1000 <= $threshold );
+
+    }
+
+    /**
+     * Returns whether or not a given color is considered "light"
+     * @param array|book $color
+     * @param bool|int $threshold
+     * @return boolean
+     */
+    public function isLight( $threshold = false, $color == false ){
+
+    	$threshold = ( empty( $threshold ) ) ? $this->_threshold : $threshold;
+
+		$color = ( empty( $color ) ) ? $this->_color : $color;
+
+        return (( $color['R']*299 + $color['G']*587 + $color['B']*114 )/1000 > $threshold );
+
+    }
 
 	/***********************************************/
 	/*                 Conversion                  */
