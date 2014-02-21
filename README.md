@@ -32,7 +32,7 @@ The instance can be echoed any time, in this case it will produce the RGBA strin
 ```php
 
 // Initialize a color
-$color = new Color( '#ec3a34' );
+$color = new dynamicColor( '#ec3a34' );
 
 echo $color;
 // rgba( 236, 58, 52, 1 );
